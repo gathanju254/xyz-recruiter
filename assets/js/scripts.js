@@ -8,83 +8,8 @@ document.addEventListener("DOMContentLoaded", function() {
       new bootstrap.Tooltip(tooltipTriggerEl);
     });
   }
-  initTooltips();
-
-  // Smooth scrolling with fixed navbar offset
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      e.preventDefault();
-      const targetId = this.getAttribute('href');
-      if (targetId === '#') return;
-      const targetElement = document.querySelector(targetId);
-      if (targetElement) {
-        const navbar = document.querySelector('.navbar');
-        const navbarHeight = navbar ? navbar.offsetHeight : 0;
-        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
-        window.scrollTo({
-          top: targetPosition,
-          behavior: 'smooth'
-        });
-        if (history.pushState) {
-          history.pushState(null, null, targetId);
-        } else {
-          location.hash = targetId;
-        }
-      }
-    });
-  });
-
-  // Form validation
-  document.querySelectorAll('.needs-validation').forEach(form => {
-    form.addEventListener('submit', function(event) {
-      if (!form.checkValidity()) {
-        event.preventDefault();
-        event.stopPropagation();
-      }
-      form.classList.add('was-validated');
-    }, false);
-  });
-
-  // Counter animation: skip non-numeric values
-  const counters = document.querySelectorAll('.counter h2');
-  const speed = 200;
-  if (counters.length > 0) {
-    const animateCounters = () => {
-      counters.forEach(counter => {
-        const originalText = counter.textContent;
-        // Skip animation for values like 24/7, 98%, 500+
-        if (originalText.includes('/') || originalText.includes('%') || originalText.includes('+')) {
-          counter.textContent = originalText;
-          return;
-        }
-        const target = parseInt(originalText.replace(/\D/g, ''), 10);
-        const current = parseInt(counter.dataset.current || '0', 10);
-        const increment = target / speed;
-        if (current < target) {
-          const newValue = Math.ceil(current + increment);
-          counter.dataset.current = newValue;
-          counter.textContent = newValue;
-          setTimeout(animateCounters, 1);
-        } else {
-          counter.textContent = originalText;
-        }
-      });
-    };
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          animateCounters();
-          observer.unobserve(entry.target);
-        }
-      });
-    }, { threshold: 0.5 });
-    counters.forEach(counter => {
-      counter.dataset.current = '0';
-      observer.observe(counter);
-    });
-  }
-
-  // Load includes with error handling
+  
+  // Load includes with error handling and fallback
   function loadInclude(elementId, url) {
     fetch(url)
       .then(response => {
@@ -105,7 +30,10 @@ document.addEventListener("DOMContentLoaded", function() {
                   <i class="fas fa-globe-africa me-2"></i>
                   XYZ Recruiter
                 </a>
-                <div class="collapse navbar-collapse">
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
                   <ul class="navbar-nav ms-auto">
                     <li class="nav-item"><a class="nav-link" href="index.html">Home</a></li>
                     <li class="nav-item"><a class="nav-link" href="jobs.html">Jobs</a></li>
@@ -138,6 +66,7 @@ document.addEventListener("DOMContentLoaded", function() {
             </footer>
           `;
         }
+        
         // Load Font Awesome if not already loaded
         if (!document.querySelector('#font-awesome-css')) {
           const faCSS = document.createElement('link');
@@ -146,10 +75,98 @@ document.addEventListener("DOMContentLoaded", function() {
           faCSS.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
           document.head.appendChild(faCSS);
         }
+        
+        initTooltips();
       });
   }
 
-  // Initialize includes
+  // Initialize includes first
   loadInclude("navbar-placeholder", "includes/navbar.html");
   loadInclude("footer-placeholder", "includes/footer.html");
+
+  // Initialize tooltips for existing elements
+  initTooltips();
+
+  // Smooth scrolling with fixed navbar offset
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      e.preventDefault();
+      const targetId = this.getAttribute('href');
+      if (targetId === '#') return;
+      
+      const targetElement = document.querySelector(targetId);
+      if (targetElement) {
+        const navbar = document.querySelector('.navbar');
+        const navbarHeight = navbar ? navbar.offsetHeight : 0;
+        const targetPosition = targetElement.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
+        
+        window.scrollTo({
+          top: targetPosition,
+          behavior: 'smooth'
+        });
+        
+        if (history.pushState) {
+          history.pushState(null, null, targetId);
+        } else {
+          location.hash = targetId;
+        }
+      }
+    });
+  });
+
+  // Form validation
+  document.querySelectorAll('.needs-validation').forEach(form => {
+    form.addEventListener('submit', function(event) {
+      if (!form.checkValidity()) {
+        event.preventDefault();
+        event.stopPropagation();
+      }
+      form.classList.add('was-validated');
+    }, false);
+  });
+
+  // Counter animation with special characters handling
+  const counters = document.querySelectorAll('.counter h2');
+  const speed = 200;
+  
+  if (counters.length > 0) {
+    const animateCounters = () => {
+      counters.forEach(counter => {
+        const originalText = counter.textContent;
+        
+        // Skip animation for non-numeric values
+        if (originalText.includes('/') || originalText.includes('%') || originalText.includes('+')) {
+          counter.textContent = originalText;
+          return;
+        }
+        
+        const target = parseInt(originalText.replace(/\D/g, ''), 10);
+        const current = parseInt(counter.dataset.current || '0', 10);
+        const increment = target / speed;
+        
+        if (current < target) {
+          const newValue = Math.ceil(current + increment);
+          counter.dataset.current = newValue;
+          counter.textContent = newValue;
+          setTimeout(animateCounters, 1);
+        } else {
+          counter.textContent = originalText;
+        }
+      });
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          animateCounters();
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.5 });
+    
+    counters.forEach(counter => {
+      counter.dataset.current = '0';
+      observer.observe(counter);
+    });
+  }
 });
