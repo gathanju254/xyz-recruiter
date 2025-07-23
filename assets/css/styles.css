@@ -2,14 +2,15 @@
   --primary: #0d6efd;
   --secondary: #6c757d;
   --accent: #ffc107;
-  --dark: #212529;
+  --dark: #1a1a2e;
   --light: #f8f9fa;
+  --stats-bg: #16213e;
+  --testimonials-bg: #0f3460;
 }
 
-/* Add this new rule to fix navbar overlap */
+/* Base Styles */
 html {
   scroll-behavior: smooth;
-  /* Removed padding-top: 56px; */
 }
 
 body {
@@ -18,7 +19,7 @@ body {
   color: #333;
   margin: 0;
   padding: 0;
-  padding-top: 56px; /* Added to body instead of html */
+  padding-top: 56px; /* Fixed navbar offset */
 }
 
 /* Typography */
@@ -43,6 +44,7 @@ h1, h2, h3, h4, h5, h6 {
   z-index: 1030;
   padding: 0.8rem 0;
   box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: var(--dark) !important;
 }
 
 .navbar-brand {
@@ -82,15 +84,34 @@ h1, h2, h3, h4, h5, h6 {
   /* Removed padding-top: 56px; */
 }
 
+/* Hero Section Fix */
+.hero-section {
+  min-height: 100vh;
+  padding-top: 56px; /* Match navbar height */
+  margin-top: -56px; /* Counteract body padding */
+}
+
+/* Stats Section */
+.bg-stats {
+  background-color: var(--stats-bg) !important;
+}
+
+/* Testimonials Section */
+.bg-testimonials {
+  background-color: var(--testimonials-bg) !important;
+}
+
 /* Cards */
 .card {
   transition: all 0.3s ease;
   border: none;
+  border-radius: 10px;
+  overflow: hidden;
 }
 
 .card:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15) !important;
 }
 
 .job-card:hover {
@@ -108,6 +129,8 @@ h1, h2, h3, h4, h5, h6 {
   background-color: var(--accent);
   border-color: var(--accent);
   color: var(--dark);
+  font-weight: 600;
+  transition: all 0.3s ease;
 }
 
 .btn-warning:hover {
@@ -260,15 +283,6 @@ footer .social-icons a:hover {
 .upload-area:hover {
   border-color: var(--accent);
   background-color: rgba(255, 193, 7, 0.05);
-}
-
-/* New background colors */
-.bg-stats {
-  background-color: #2c3e50; /* Deep blue-gray */
-}
-
-.bg-testimonials {
-  background-color: #34495e; /* Slightly lighter blue-gray */
 }
 
 /* Responsive Adjustments */
