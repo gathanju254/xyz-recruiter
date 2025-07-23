@@ -45,15 +45,15 @@ document.addEventListener("DOMContentLoaded", function() {
     }, false);
   });
 
-  // Counter animation with special characters fix
+  // Counter animation: skip non-numeric values
   const counters = document.querySelectorAll('.counter h2');
   const speed = 200;
   if (counters.length > 0) {
     const animateCounters = () => {
       counters.forEach(counter => {
         const originalText = counter.textContent;
-        // Skip animation for values like 24/7
-        if (originalText.includes('/')) {
+        // Skip animation for values like 24/7, 98%, 500+
+        if (originalText.includes('/') || originalText.includes('%') || originalText.includes('+')) {
           counter.textContent = originalText;
           return;
         }
@@ -63,13 +63,7 @@ document.addEventListener("DOMContentLoaded", function() {
         if (current < target) {
           const newValue = Math.ceil(current + increment);
           counter.dataset.current = newValue;
-          if (originalText.includes('%')) {
-            counter.textContent = newValue + '%';
-          } else if (originalText.includes('+')) {
-            counter.textContent = newValue + '+';
-          } else {
-            counter.textContent = newValue;
-          }
+          counter.textContent = newValue;
           setTimeout(animateCounters, 1);
         } else {
           counter.textContent = originalText;
