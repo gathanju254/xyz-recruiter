@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Track your Gulf job application status with XYZ Recruiter">
+  <title>Application Status | XYZ Recruiter</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="icon" href="assets/images/favicon.ico" type="image/x-icon">
+</head>
+<body>
+
+  <!-- Navbar Include -->
+  <div id="navbar-placeholder"></div>
+
+  <!-- Status Header -->
+  <section class="status-header py-5 bg-primary text-white">
+    <div class="container text-center">
+      <h1 class="display-4 fw-bold mb-3">Application Status</h1>
+      <p class="lead">Track your Gulf job application progress in real-time</p>
+    </div>
+  </section>
+
+  <!-- Status Content -->
+  <section class="py-5">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-lg-10">
+          <div class="card border-0 shadow-sm mb-5">
+            <div class="card-body p-4 p-md-5">
+              <div class="d-flex justify-content-between align-items-center mb-4">
+                <h2 class="fw-bold mb-0">Your Applications</h2>
+                <button class="btn btn-outline-dark" data-bs-toggle="modal" data-bs-target="#newApplicationModal">
+                  <i class="fas fa-plus me-2"></i>New Application
+                </button>
+              </div>
+              
+              <div class="table-responsive">
+                <table class="table table-hover align-middle">
+                  <thead class="table-dark">
+                    <tr>
+                      <th>Job Position</th>
+                      <th>Location</th>
+                      <th>Status</th>
+                      <th>Last Update</th>
+                      <th>Actions</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>
+                        <h6 class="fw-bold mb-1">Security Guard</h6>
+                        <small class="text-muted">Ref: #XYZ-2025-487</small>
+                      </td>
+                      <td>Dubai, UAE</td>
+                      <td>
+                        <span class="badge bg-success rounded-pill px-3 py-2">
+                          <i class="fas fa-check-circle me-1"></i> Approved
+                        </span>
+                      </td>
+                      <td>22 July 2025</td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">Details</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h6 class="fw-bold mb-1">Housemaid</h6>
+                        <small class="text-muted">Ref: #XYZ-2025-512</small>
+                      </td>
+                      <td>Doha, Qatar</td>
+                      <td>
+                        <span class="badge bg-warning text-dark rounded-pill px-3 py-2">
+                          <i class="fas fa-clock me-1"></i> Pending
+                        </span>
+                      </td>
+                      <td>21 July 2025</td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">Details</button>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <h6 class="fw-bold mb-1">Electrician</h6>
+                        <small class="text-muted">Ref: #XYZ-2025-389</small>
+                      </td>
+                      <td>Riyadh, Saudi Arabia</td>
+                      <td>
+                        <span class="badge bg-danger rounded-pill px-3 py-2">
+                          <i class="fas fa-times-circle me-1"></i> Rejected
+                        </span>
+                      </td>
+                      <td>20 July 2025</td>
+                      <td>
+                        <button class="btn btn-sm btn-outline-primary">Details</button>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              
+              <nav aria-label="Application pagination" class="mt-4">
+                <ul class="pagination justify-content-center">
+                  <li class="page-item disabled">
+                    <a class="page-link" href="#" tabindex="-1">Previous</a>
+                  </li>
+                  <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                  <li class="page-item"><a class="page-link" href="#">2</a></li>
+                  <li class="page-item">
+                    <a class="page-link" href="#">Next</a>
+                  </li>
+                </ul>
+              </nav>
+            </div>
+          </div>
+          
+          <div class="row g-4">
+            <div class="col-md-6">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                  <h3 class="fw-bold mb-4">Application Timeline</h3>
+                  <div class="timeline-vertical">
+                    <div class="timeline-item">
+                      <div class="timeline-badge bg-success"></div>
+                      <div class="timeline-content">
+                        <h5 class="fw-bold">Application Approved</h5>
+                        <p class="text-muted mb-2">22 July 2025</p>
+                        <p>Your application for Security Guard position has been approved. Visa processing will begin shortly.</p>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-badge bg-primary"></div>
+                      <div class="timeline-content">
+                        <h5 class="fw-bold">Medical Cleared</h5>
+                        <p class="text-muted mb-2">20 July 2025</p>
+                        <p>Medical test results have been approved by Gulf authorities.</p>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-badge bg-primary"></div>
+                      <div class="timeline-content">
+                        <h5 class="fw-bold">Documents Verified</h5>
+                        <p class="text-muted mb-2">15 July 2025</p>
+                        <p>All submitted documents have been verified and approved.</p>
+                      </div>
+                    </div>
+                    <div class="timeline-item">
+                      <div class="timeline-badge bg-primary"></div>
+                      <div class="timeline-content">
+                        <h5 class="fw-bold">Application Submitted</h5>
+                        <p class="text-muted mb-2">10 July 2025</p>
+                        <p>Your application has been received and is being processed.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="col-md-6">
+              <div class="card border-0 shadow-sm h-100">
+                <div class="card-body p-4">
+                  <h3 class="fw-bold mb-4">Next Steps</h3>
+                  <div class="next-steps">
+                    <div class="step-card bg-light p-3 rounded-3 mb-3">
+                      <div class="d-flex">
+                        <div class="step-number bg-warning text-white rounded-circle me-3">1</div>
+                        <div>
+                          <h5 class="fw-bold mb-1">Visa Processing</h5>
+                          <p class="mb-0">We are currently processing your employment visa with UAE authorities.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="step-card bg-light p-3 rounded-3 mb-3">
+                      <div class="d-flex">
+                        <div class="step-number bg-secondary text-white rounded-circle me-3">2</div>
+                        <div>
+                          <h5 class="fw-bold mb-1">Flight Arrangements</h5>
+                          <p class="mb-0">Once visa is approved, we will book your flight and share details.</p>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="step-card bg-light p-3 rounded-3">
+                      <div class="d-flex">
+                        <div class="step-number bg-secondary text-white rounded-circle me-3">3</div>
+                        <div>
+                          <h5 class="fw-bold mb-1">Pre-Departure Briefing</h5>
+                          <p class="mb-0">Attend our mandatory orientation session before travel.</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+                  <div class="alert alert-info mt-4">
+                    <div class="d-flex align-items-center">
+                      <i class="fas fa-info-circle fa-2x me-3"></i>
+                      <div>
+                        <h5 class="fw-bold mb-1">Estimated Timeline</h5>
+                        <p class="mb-0">Visa processing typically takes 7-14 working days. We'll notify you immediately when there are updates.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Status Legend -->
+  <section class="py-4 bg-light">
+    <div class="container">
+      <div class="row g-3">
+        <div class="col-md-3">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-success rounded-pill me-2" style="width: 20px; height: 20px;"></span>
+            <span>Approved</span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-warning text-dark rounded-pill me-2" style="width: 20px; height: 20px;"></span>
+            <span>Pending</span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-danger rounded-pill me-2" style="width: 20px; height: 20px;"></span>
+            <span>Rejected</span>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="d-flex align-items-center">
+            <span class="badge bg-info rounded-pill me-2" style="width: 20px; height: 20px;"></span>
+            <span>In Progress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Support Section -->
+  <section class="py-5">
+    <div class="container text-center">
+      <h2 class="fw-bold mb-4">Need Help With Your Application?</h2>
+      <p class="lead mb-5">Our support team is available to answer any questions about your application status.</p>
+      <div class="d-flex gap-3 justify-content-center">
+        <a href="contact.html" class="btn btn-warning btn-lg px-4">
+          <i class="fas fa-headset me-2"></i>Contact Support
+        </a>
+        <a href="tel:+254700123456" class="btn btn-outline-dark btn-lg px-4">
+          <i class="fas fa-phone-alt me-2"></i>Call Now
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- New Application Modal -->
+  <div class="modal fade" id="newApplicationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title fw-bold">New Job Application</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="mb-3">
+              <label for="jobSelect" class="form-label">Select Job Position</label>
+              <select class="form-select" id="jobSelect" required>
+                <option value="">Choose a position</option>
+                <option value="security">Security Guard - Dubai</option>
+                <option value="maid">Housemaid - Qatar</option>
+                <option value="electrician">Electrician - Saudi Arabia</option>
+                <option value="driver">Driver - UAE</option>
+                <option value="cleaner">Cleaner - Kuwait</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <label for="applicantName" class="form-label">Full Name</label>
+              <input type="text" class="form-control" id="applicantName" required>
+            </div>
+            <div class="mb-3">
+              <label for="applicantEmail" class="form-label">Email Address</label>
+              <input type="email" class="form-control" id="applicantEmail" required>
+            </div>
+            <div class="mb-3">
+              <label for="applicantPhone" class="form-label">Phone Number</label>
+              <input type="tel" class="form-control" id="applicantPhone" required>
+            </div>
+            <div class="mb-3">
+              <label class="form-label">Have you worked in Gulf before?</label>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gulfExperience" id="gulfYes" value="yes">
+                <label class="form-check-label" for="gulfYes">Yes</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="radio" name="gulfExperience" id="gulfNo" value="no" checked>
+                <label class="form-check-label" for="gulfNo">No</label>
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="applicantNotes" class="form-label">Additional Notes</label>
+              <textarea class="form-control" id="applicantNotes" rows="3"></textarea>
+            </div>
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cancel</button>
+          <button type="button" class="btn btn-warning">Submit Application</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Footer Include -->
+  <div id="footer-placeholder"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/scripts.js"></script>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      fetch("includes/navbar.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("navbar-placeholder").innerHTML = html)
+        .catch(err => console.error("Error loading navbar:", err));
+
+      fetch("includes/footer.html")
+        .then(res => res.text())
+        .then(html => document.getElementById("footer-placeholder").innerHTML = html)
+        .catch(err => console.error("Error loading footer:", err));
+    });
+  </script>
+</body>
+</html>
